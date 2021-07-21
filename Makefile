@@ -11,9 +11,13 @@ install:
 	touch install
 
 # Using local dependencies, starts a doc site instance on http://localhost:3000.
-run: install
+run: install.
 	-chmod -R 777 dist
 	gulp
+
+build: install
+	-chmod -R 777 dist
+	./node_modules/.bin/gulp build
 
 # Brings up a docker container and starts a doc site instance on
 # http://localhost:3000.
@@ -36,6 +40,9 @@ clean:
 # Runs tests using the npm standard and echint linters.
 test: install
 	npm test
+
+rspec: install
+	bundle exec rspec
 
 # Starts a docker container in the background.
 background-docker-up:
